@@ -1,0 +1,32 @@
+version: '3.1'
+
+services:
+
+  wordpress:
+    container_name: wordpress
+    image: wordpress
+    restart: always
+    environment:
+      WORDPRESS_DB_HOST: db:3306
+      WORDPRESS_DB_USER: wordpress
+      WORDPRESS_DB_PASSWORD: P6@dWaVB*s^uDtTr$AzY
+    ports:
+      - 8081:80
+    depends_on:
+      - db
+  db:
+    container_name: db
+    image: mariadb
+    restart: always
+    environment:
+      MARIADB_DATABASE: wordpress
+      MYSQL_USER: wordpress
+      MARIADB_PASSWORD: P6@dWaVB*s^uDtTr$AzY
+      MYSQL_ROOT_PASSWORD: znh3wvN*BY^s93YvuYJs
+
+  adminer:
+    container_name: adminer
+    image: adminer
+    restart: always
+    ports:
+      - 8080:8080
